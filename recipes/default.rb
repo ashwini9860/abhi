@@ -25,6 +25,10 @@ end
 node["abhi"]["sites"].each do |site_name, site_data|
  document_root = "/srv/abhi/#{site_name}"
 
+#execute "enable-sites" do
+# command "a2ensite#{site_name}"
+# action :nothing
+#end
 template "/etc/apache2/sites-available/#{site_name}.conf" do
  source "custom.erb"
  mode "0644"
@@ -32,6 +36,7 @@ template "/etc/apache2/sites-available/#{site_name}.conf" do
   :document_root => document_root,
   :port => site_data["port"]
  )
+# notifies :run, "execute[enable-sites]" 
  notifies :restart, "service[apache2]"
 end
 directory document_root do
