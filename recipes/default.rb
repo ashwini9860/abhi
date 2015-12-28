@@ -49,5 +49,6 @@ template "#{document_root}/index.html" do
 end
 service "apache2" do
  action [ :enable, :start ]
+ supports :reload => true, :restart => true
 end
 
