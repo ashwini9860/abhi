@@ -27,7 +27,7 @@ node["abhi"]["sites"].each do |site_name, site_data|
 
 execute "enable-sites" do
  command "a2ensite #{site_name}.conf"
- not_if File.exist?("/etc/apache2/sites-enabled/#{site_name}.conf
+ not_if File.exist?("/etc/apache2/sites-enabled/#{site_name}.conf")
 end
 
 template "/etc/apache2/sites-available/#{site_name}.conf" do
