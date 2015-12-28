@@ -22,7 +22,7 @@ execute "mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-ava
  notifies :restart, "service[apache2]"
 end
 
-node["abhi"]["sites"].each do |site_name, sie_data|
+node["abhi"]["sites"].each do |site_name, site_data|
  document_root = "/srv/abhi/#{site_name}"
 
 template "/etc/apache2/sites-available/#{site_name}.conf" do

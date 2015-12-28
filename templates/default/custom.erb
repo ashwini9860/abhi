@@ -1,11 +1,11 @@
 <% if @port != 80 -%>
- Listein <%= @port %>
+ Listen <%= @port %>
 <% end -%>
 
 <VirtualHost *:<%= @port %>>
  ServerAdmin webmaster@localhost
 
-DocumentRoot <%+ @document_root %>
+DocumentRoot <%= @document_root %>
 <Directory />
  Options FollowSymLinks
  AllowOverride None
