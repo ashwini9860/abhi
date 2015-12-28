@@ -26,7 +26,7 @@ node["abhi"]["sites"].each do |site_name, site_data|
  document_root = "/srv/abhi/#{site_name}"
 
 execute "enable-sites" do
- command "a2ensite #{site_name}"
+ command "a2ensite #{site_name}.conf"
  not_if File.exist?("/etc/apache2/sites-enabled/#{site_name}.conf
 end
 
