@@ -25,10 +25,11 @@ end
 node["abhi"]["sites"].each do |site_name, site_data|
  document_root = "/srv/abhi/#{site_name}"
 
-#execute "enable-sites" do
-# command "a2ensite#{site_name}"
-# action :nothing
-#end
+execute "enable-sites" do
+ command "a2ensite #{site_name}"
+ not_if File.exist?("/etc/apache2/sites-enabled/#{site_name}.conf
+end
+
 template "/etc/apache2/sites-available/#{site_name}.conf" do
  source "custom.erb"
  mode "0644"
